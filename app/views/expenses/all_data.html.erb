@@ -1,0 +1,29 @@
+<%= link_to "Back to Home", root_path %>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Category</th>
+      <th>Employee name</th>
+      <th>Employee Address</th>
+      <th>Expense Description</th>
+      <th>Pre-tax Amount</th>
+      <th>Tax name</th>
+      <th>Tax amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @expenses.each do |e| %>
+    <tr>
+      <td><%= e.date %></td>
+      <td><%= e.employee.name %></td>
+      <td><%= e.employee.address %></td>
+      <td><%= e.category %></td>
+      <td><%= e.expense_desc %></td>
+      <td><%= number_to_currency(e.amount) %></td>
+      <td><%= e.tax_name %></td>
+      <td><%= number_to_currency(e.tax_amount) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

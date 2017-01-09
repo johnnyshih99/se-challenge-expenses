@@ -1,0 +1,26 @@
+<%= flash[:notice] %>
+
+<div>
+  <h4> Import data </h4>
+  <%= form_tag import_expenses_path, multipart:true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import CSV" %>
+  <% end %>
+</div>
+<br><br>
+<%= link_to "All Data", expenses_all_data_path %>
+<table border="1">
+  <thead>
+    <tr>
+      <th colspan="2">Total Expenses per Month</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @data.each do |k,v| %>
+    <tr>
+      <td><%= k %></td>
+      <td><%= number_to_currency(v) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
